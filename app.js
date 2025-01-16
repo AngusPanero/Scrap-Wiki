@@ -2,7 +2,6 @@ const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const app = express();
-const PORT = 4000;
 
 const url = "https://es.wikipedia.org/wiki/Categor%C3%ADa:M%C3%BAsicos_de_rap";
 const baseUrl = "https://es.wikipedia.org/"
@@ -68,11 +67,11 @@ app.get("/raperos", async (req, res) => {
         res.send(htmlRaperos);
     }
     catch(error){
-        console.error(error, "Error en la Solicitud")
+        console.log(error, "Error en la Solicitud")
         res.status(500).send("Error 500 - Error en la Terminal");
     }
 });
 
-app.listen (PORT, () => {
-    console.log(`Server Listening On Port http://localhost${PORT}`);
+const server = app.listen (0, () => {
+    console.log(`Server Listening On Port http://localhost${server.address().port}`);
 })
