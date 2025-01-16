@@ -46,7 +46,7 @@ app.get("/raperos", async (req, res) => {
                 const $ = cheerio.load(html);
 
                 const nombre = $(".mw-page-title-main").text();
-                const imagen = $(".infobox img").attr("src"); // Selector mejorado
+                const imagen = $(".infobox img").attr("src");
                 const texto = $("p").first().text();
 
                 detallesRaperos.push({ nombre, imagen, texto});
@@ -57,7 +57,7 @@ app.get("/raperos", async (req, res) => {
         
         let htmlRaperos = `<h1>Detalles de Raperos</h1>`;
         detallesRaperos.forEach(rapero => {
-            htmlContent += `
+            htmlRaperos += `
                 <div class="rapero">
                     <h2>${rapero.nombre}</h2>
                     <img src="${"http:" + rapero.imagen}" alt="${rapero.nombre}" style="max-width:200px;">
